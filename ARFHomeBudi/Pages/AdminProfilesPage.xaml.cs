@@ -5,13 +5,11 @@ namespace ARFHomeBudi.Pages;
 public partial class AdminProfilesPage : ContentPage
 {
 	private readonly UserDBService _userDBService;
-    private readonly AuthService authService;
     private int _editUserID;
     public AdminProfilesPage(UserDBService dbService)
 	{
 		InitializeComponent();
 		_userDBService = dbService;
-        this.authService = new AuthService();
 		Task.Run(async () => listView.ItemsSource = await _userDBService.GetReadable());
 	}
 
@@ -45,7 +43,6 @@ public partial class AdminProfilesPage : ContentPage
             {
                 await _userDBService.Update(new User
                 {
-                    U_ID = _editUserID,
                     U_Email = Email.Text,
                     U_Pass = Password.Text,
                     U_FName = FirstName.Text,
@@ -82,9 +79,6 @@ public partial class AdminProfilesPage : ContentPage
         HouseNum.Text = string.Empty;
         NBI.Text = string.Empty;
         FB.Text = string.Empty;
-        Role.Text = string.Empty;
-        IsRequestingRadioButton.IsChecked = false;
-        IsNotRequestingRadioButton.IsChecked = false;
 
         await Task.Run(async () => listView.ItemsSource = await _userDBService.GetReadable());
     }
@@ -126,7 +120,6 @@ public partial class AdminProfilesPage : ContentPage
         switch (action)
         {
             case "Edit":
-                _editUserID = user.U_ID;
                 Email.Text = user.U_Email;
                 Password.Text = user.U_Pass;
                 FirstName.Text = user.U_FName;
@@ -149,21 +142,9 @@ public partial class AdminProfilesPage : ContentPage
         }
     }
 
-    private async void Search_TextChanged(object sender, TextChangedEventArgs e)
+    private void Search_TextChanged(object sender, TextChangedEventArgs e)
     {
-        if (Search.Text == string.Empty)
-        {
-            listView.ItemsSource = await _userDBService.GetReadable();
-        }
-        else
-        {
-            listView.ItemsSource = await _userDBService.GetSearch(Search.Text);
-        }
-    }
-
-    private async void Logout_Clicked(object sender, EventArgs e)
-    {
-        authService.Logout();
-        await Shell.Current.GoToAsync($"//{nameof(LoadingPage)}");
+        Console.WriteLine("THE SEARCH IS WORKING");
+        Task.Run(async () => listView.ItemsSource = await _userDBService.GetSearch(Search.Text.ToString()));
     }
 }

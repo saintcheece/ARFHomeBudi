@@ -64,12 +64,11 @@ namespace ARFHomeBudi.Services
                 @"SELECT *
                 FROM User u");
         }
-        public async Task<List<User>> GetSearch(string x)
+        public async Task<List<User>> GetSearch(string keyword)
         {
-            string sql = "SELECT * FROM User u WHERE u.U_Email LIKE '"+x+"' OR u.U_Pass LIKE '"+x+"' OR u.U_FName LIKE '"+x+"' OR u.U_LName LIKE '"+x+"' OR u.U_Cntry LIKE '"+x+"' OR u.U_City LIKE '"+x+"' OR u.U_Prov LIKE '"+x+"' OR u.U_Town LIKE '"+x+"' OR u.U_HNum LIKE '"+x+"' OR u.U_FB LIKE '"+x+"'";
-
-            Console.WriteLine(sql);
-            return await _connection.QueryAsync<User>(sql);
+            return await _connection.QueryAsync<User>(
+                @"SELECT * FROM users
+                WHERE U_ID = 5");
         }
     }
 }
