@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="ARFHomeBudi.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ARFHomeBudi"
+    xmlns:pages="clr-namespace:ARFHomeBudi.Pages"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.Resources>
+        <Style TargetType="Element" x:Key="ShellStyle">
+            <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
+            <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+        </Style>
+    </Shell.Resources>
+
+    <Shell.TitleView>
+        <Grid Padding="0">
+            <Image Source="icon_name.png"
+               HeightRequest="25"
+               HorizontalOptions="Start"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <!--LOADING PAGE-->
+    <ShellContent
+        Title="Loading Page"
+        ContentTemplate="{DataTemplate pages:LoadingPage}"
+        Route="LoadingPage"
+        FlyoutItemIsVisible="False"/>
+
+    <!--LOGIN PAGE-->
+    <ShellContent
+        Title="Log In Page"
+        ContentTemplate="{DataTemplate pages:LoginPage}"
+        Route="LoginPage"
+        FlyoutItemIsVisible="False"/>
+
+    <!--LOGIN PAGE-->
+    <ShellContent
+        Title="Sign Up Page"
+        ContentTemplate="{DataTemplate pages:SignupPage}"
+        Route="SignupPage"
+        FlyoutItemIsVisible="False"/>
+
+    <!--POST JOB-->
+    <ShellContent
+        Title="Post Job"
+        ContentTemplate="{DataTemplate pages:PostJob}"
+        Route="PostJob"
+        FlyoutItemIsVisible="False"/>
+
+    <!--POST JOB-->
+    <ShellContent
+        Title="Categories"
+        ContentTemplate="{DataTemplate pages:AdminPage}"
+        Route="AdminPage"/>
+
+    <ShellContent
+        Title="Users"
+        ContentTemplate="{DataTemplate pages:AdminProfilesPage}"
+        Route="AdminProfilesPage"/>
+
+    <TabBar>
+        <!--DASHBOARD-->
+        <Tab Icon="home.svg"
+             Title="Dashboard">
+            <ShellContent
+                ContentTemplate="{DataTemplate pages:MainPage}"
+                Route="MainPage" />
+        </Tab>
+        <Tab Title="Transactions"
+             Icon="transaction.svg">
+            <ShellContent
+                Title="Step 1: Accept"
+                ContentTemplate="{DataTemplate pages:Step1}"
+                Route="Step1"/>
+            <ShellContent
+                Title="Step 2: Track"
+                ContentTemplate="{DataTemplate pages:Step2}"
+                Route="Step2"/>
+            <ShellContent
+                Title="Step 3: Review"
+                ContentTemplate="{DataTemplate pages:Step3}"
+                Route="Step3"/>
+        </Tab>
+        <Tab Title="Profile"
+             Icon="profile.png">
+            <ShellContent
+                ContentTemplate="{DataTemplate pages:ProfilePage}"
+                Route="ProfilePage"/>
+        </Tab>
+    </TabBar>
+
+</Shell>

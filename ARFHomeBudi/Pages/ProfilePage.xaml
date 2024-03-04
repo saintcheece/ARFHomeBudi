@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ARFHomeBudi.Pages.ProfilePage"
+             Title="ProfilePage"
+             Shell.BackgroundColor="{StaticResource Primary}">
+    <Shell.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="icon_name_white.png" HeightRequest="25" Grid.Column="0" />
+            <Button
+                Text="Log Out"
+                HorizontalOptions="EndAndExpand"  WidthRequest="100"
+                Margin="10"
+                BorderWidth="2"
+                BorderColor="White"
+                Grid.Column="1"
+                Clicked="Logout_Clicked"/>
+
+        </Grid>
+    </Shell.TitleView>
+    <VerticalStackLayout>
+        <!--HEAD PROFILE-->
+        <StackLayout Padding="20"
+                 BackgroundColor="{StaticResource Primary}">
+            <HorizontalStackLayout>
+                <Frame WidthRequest="80"
+                   HeightRequest="80"
+                   CornerRadius="50">
+                    <Image Source="profile.png"
+                       WidthRequest="80"
+                       HeightRequest="80"
+                       Aspect="AspectFill" />
+                </Frame>
+                <VerticalStackLayout Padding="15">
+                    <HorizontalStackLayout>
+                        <Label x:Name="UserName" Text="{Binding U_FName}"
+                            FontSize="30"
+                            FontAttributes="Bold"
+                            TextColor="White"/>
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label x:Name="UserLoc"
+                               Text="{Binding U_City}"
+                            FontSize="20"
+                            TextColor="White"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout 
+                HorizontalOptions="CenterAndExpand"
+                Margin="10">
+                <HorizontalStackLayout
+                    Spacing="5"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="10, 0, 10, 20">
+                    <Image
+                        Source="rate_fill.png"
+                        HeightRequest="30"/>
+                    <Image 
+                        Source="rate_fill.png"
+                        HeightRequest="30"/>
+                    <Image 
+                        Source="rate_fill.png"
+                        HeightRequest="30"/>
+                    <Image
+                        Source="rate_fill.png"
+                        HeightRequest="30"/>
+                    <Image 
+                        Source="rate_empty.png"
+                        HeightRequest="30"/>
+                </HorizontalStackLayout>
+            </HorizontalStackLayout>
+            <Grid ColumnDefinitions="*, *, *, *" Margin="10, 10, 10, 10">
+                <Image 
+                    Grid.Column="0"
+                    Source="shield.svg"
+                    HeightRequest="30"/>
+                <Image 
+                    Grid.Column="1"
+                    Source="logo_facebook.svg"
+                    HeightRequest="30"/>
+                <Image 
+                    Grid.Column="2"
+                    Source="resume.svg"
+                    HeightRequest="30"/>
+                <Image 
+                    Grid.Column="3"
+                    Source="logo_linkedin.svg"
+                    HeightRequest="30"/>
+            </Grid>
+        </StackLayout>
+        <Label Text="Transaction History"
+           Margin="10"
+           FontSize="23"
+           FontAttributes="Bold"/>
+        <ScrollView BackgroundColor="LightGray" HeightRequest="380">
+            <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="{Binding Job_Title}" FontSize="17" FontAttributes="Bold" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding WorkerName}" />
+                                    <Label Grid.Column="1" Text="{Binding Trans_Date}" />
+                                    <Label Grid.Column="2" Text="{Binding Rev_ScoreToWorker}"/>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+            <Border Margin="20, 20, 20, 30" Padding="50, 20, 50, 20"
+                StrokeThickness="2"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle, 50, 50">
+                <Label Text="Register as a Home Service Provider"
+                   FontSize="20" TextColor="{StaticResource Primary}"/>
+            </Border>
+    </VerticalStackLayout>
+</ContentPage>

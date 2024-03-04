@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ARFHomeBudi.Pages.SignupPage"
+             Title="SignupPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout>
+                <StackLayout Margin="25" Spacing="10">
+                    <!--EMAIL-->
+                    <VerticalStackLayout>
+                        <Label Text="Let's Get You Started!"
+                            FontSize="35"
+                               Margin="0, 10, 0, 20"
+                               FontAttributes="Bold"/>
+                        <Label Text="Log Information"
+                            FontSize="20"/>
+                        <Entry x:Name="Email" Placeholder="Email"   
+                           HeightRequest="40"   
+                           Keyboard="Email"/>
+                        <!--PASSWORD-->
+                        <Entry x:Name="Password" Placeholder="Password"
+                           HeightRequest="40"
+                           IsPassword="True"/>
+                    </VerticalStackLayout>
+
+                    <!--NAME-->
+                    <VerticalStackLayout>
+                        <Label Text="Name"
+                            FontSize="20"/>
+                        <Entry x:Name="FirstName" Placeholder="First Name"
+                            HeightRequest="40"/>
+                        <Entry x:Name="LastName" Placeholder="Last Name"
+                            HeightRequest="40"/>
+                    </VerticalStackLayout>
+
+                    <!--ADDRESS-->
+                    <VerticalStackLayout>
+                        <Label Text="Location"
+                            FontSize="20"/>
+                        <Entry x:Name="Country" Placeholder="Country"
+                            HeightRequest="40"/>
+                        <Entry x:Name="City" Placeholder="City"
+                            HeightRequest="40"/>
+                        <Entry x:Name="Province" Placeholder="Province"
+                            HeightRequest="40"/>
+                        <Entry x:Name="Town" Placeholder="Town"
+                            HeightRequest="40"/>
+                        <Entry x:Name="HouseNum" Placeholder="HouseNumber"
+                            HeightRequest="40"/>
+                    </VerticalStackLayout>
+
+                    <!--IDENTITY REFERENCE-->
+                    <VerticalStackLayout>
+                        <Label Text="Identity Reference"
+                            FontSize="20"/>
+                        <Entry x:Name="NBI" Placeholder="NBI Clearance ID"
+                            HeightRequest="40"/>
+                        <Entry x:Name="FB" Placeholder="Facebook Account Address"
+                            HeightRequest="40"/>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="20" Margin="20">
+                        <Button Text="Sign Up"
+                            FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                            BackgroundColor="White" TextColor="{StaticResource Primary}" BorderColor="{StaticResource Primary}"
+                            BorderWidth="2"
+                            Clicked="Signup_Clicked"/>
+                        <Button Text="I Have an Account"
+                            FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                            BackgroundColor="White" TextColor="DarkGray" BorderColor="DarkGray"
+                            BorderWidth="2"
+                            Clicked="Login_Clicked"/>
+                    </VerticalStackLayout>
+                </StackLayout>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

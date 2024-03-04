@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ARFHomeBudi.Pages.MainPage"
+             Shell.BackgroundColor="{StaticResource Primary}">
+    <Shell.TitleView>
+        <HorizontalStackLayout>
+            <Image
+               Source="icon_name_white.png"
+               HeightRequest="25"
+               HorizontalOptions="Start"/>
+        </HorizontalStackLayout>
+    </Shell.TitleView>
+
+    <Grid>
+        <VerticalStackLayout Padding="0, 50, 0, 0" BackgroundColor="{StaticResource Primary}">
+
+            <!--WORKERS LISTINGS-->
+            <Frame Padding="15, 30, 15, 15" HeightRequest="950" Margin="20, 5" HasShadow="True">
+                <VerticalStackLayout>
+                    <Label Text="Looking for" FontAttributes="Bold" Opacity="0.5" FontSize="20" HorizontalTextAlignment="Center" />
+                    <Label Text="Babysitter for a Day" FontAttributes="Bold" FontSize="40" HorizontalTextAlignment="Center" />
+                    <Label Text="Bustos, Bulacan" FontAttributes="Bold" Opacity="0.5" FontSize="25" HorizontalTextAlignment="Center" />
+                    <StackLayout>
+                        <Label Text="Child Care" FontSize="20" TextColor="{StaticResource Primary}" HorizontalTextAlignment="Center" FontAttributes="Bold" Margin="5" />
+                    </StackLayout>
+                    <Label Text="Need someone to babysit 2 children: a Highschooler and a Gradeschooler for a day this Saturday." FontSize="17" Margin="15" />
+                    <StackLayout Margin="15">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Text="April 9, 2024" FontSize="23" />
+                            <Label Grid.Column="1" Text="8 Hours" FontSize="23" HorizontalTextAlignment="End" />
+                        </Grid>
+                    </StackLayout>
+                    <HorizontalStackLayout Spacing="5" HorizontalOptions="End" Margin="15">
+                        <Label Text="Starts With" FontSize="20" />
+                        <Label Text="P2100" FontSize="35" TextColor="{StaticResource Primary}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+        <AbsoluteLayout VerticalOptions="End"
+                        HorizontalOptions="Center"
+                        Margin="0, 50">
+            <Button 
+                Text="Post Job Offer"
+                CornerRadius="50"
+                Margin="10"
+                HeightRequest="70"
+                Padding="30, 0"
+                FontSize="30"
+                FontAttributes="Bold"
+                BackgroundColor="{StaticResource Primary}"
+                Clicked="PostJob_Clicked"/>
+
+        </AbsoluteLayout>
+    </Grid>
+
+</ContentPage>

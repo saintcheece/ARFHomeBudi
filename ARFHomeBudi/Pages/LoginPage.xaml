@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ARFHomeBudi.Pages.LoginPage"
+             Title="LoginPage"
+             Shell.NavBarIsVisible="False">
+    <VerticalStackLayout Padding="20" BackgroundColor="{StaticResource Primary}">
+        <StackLayout Orientation="Vertical" Spacing="40" VerticalOptions="Center" Padding="30, 200, 30, 30">
+            <Frame BackgroundColor="White" HasShadow="False">
+                <StackLayout Orientation="Vertical" Spacing="10">
+                    <Image HorizontalOptions="Center" WidthRequest="250" Margin="20" Source="icon_name.png"/>
+                    
+                    <!--EMAIL AND PASSWORD ENTRIES-->
+                    <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email"   
+                        HeightRequest="40"   
+                       Keyboard="Email"/>
+                    <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password"   
+                       HeightRequest="40"   
+                       IsPassword="True"/>
+                    
+                    <!--LOGIN OR SIGNUP-->
+                    <Button Command="{Binding SubmitCommand}" Text="Login" TextColor="White"  
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                        BackgroundColor="{StaticResource Primary}"
+                        Clicked="Login_Clicked"/>
+                    <Label Text="or"
+                       FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"/>
+                    <Button Text="Sign Up"
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                        BackgroundColor="White" TextColor="{StaticResource Primary}" BorderColor="{StaticResource Primary}" BorderWidth="2"
+                        Clicked="Signup_Clicked"/>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

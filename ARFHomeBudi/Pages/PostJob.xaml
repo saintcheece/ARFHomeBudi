@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ARFHomeBudi.Pages.PostJob"
+             Title="PostJob">
+    <VerticalStackLayout>
+        <VerticalStackLayout>
+            <StackLayout Margin="25" Spacing="10">
+                <VerticalStackLayout>
+                    <Label Text="How Can We Help?"
+                        FontSize="35"
+                       Margin="0, 10, 0, 20"
+                       FontAttributes="Bold"/>
+                    <!--JOB TITLE-->
+                    <Label Text="Looking For..."
+                        FontSize="20"/>
+                    <Entry 
+                       x:Name="JobTitle"
+                       Placeholder="Job Title"   
+                       FontSize="30"
+                       HeightRequest="70"
+                       Keyboard="Email"/>
+                    <Picker x:Name="JobCat" ItemsSource="{Binding Categories.Cat_Name}" Title="Job Category" SelectedIndexChanged="OnCategoryIndexChanged"/>
+
+                </VerticalStackLayout>
+
+                <!--NAME-->
+                <VerticalStackLayout
+                    HeightRequest="110">
+                    <Editor
+                        x:Name="JobDesc" HeightRequest="110" Placeholder="Say something about your Job Offer"/>
+                </VerticalStackLayout>
+
+                <!--ADDRESS-->
+                <Label
+                    Text="When would you like to get this service?"/>
+                <VerticalStackLayout>
+                    <DatePicker
+                        x:Name="JobSched"
+                        MinimumDate="{Binding MinDate}"
+                        MaximumDate="{Binding MaxDate}"
+                        Date="{Binding SelectedDate}"/>
+                    <Entry
+                        x:Name="JobLen" Placeholder="How long do you expect the job to be? (Hours)"
+                        HeightRequest="40" Keyboard="Numeric"/>
+                    <Entry
+                        x:Name="JobAddPay" Placeholder="How much would you like to add to the payment?"
+                        HeightRequest="40" Keyboard="Numeric"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout
+                    Spacing="20" Margin="20">
+                    <Button
+                        Text="Post Job Offer"
+                        FontAttributes="Bold" FontSize="Large" HorizontalOptions="FillAndExpand"  
+                        BackgroundColor="White" TextColor="{StaticResource Primary}" BorderColor="{StaticResource Primary}"
+                        BorderWidth="2" Clicked="PostJob_Clicked"/>
+                    <Button Text="Back" FontSize="20" BackgroundColor="Transparent" TextColor="Gray" Clicked="Back_Clicked"></Button>
+                </VerticalStackLayout>
+            </StackLayout>
+            <!--<StackLayout>
+                <FlexLayout Direction="Column">
+                    --><!--when tap will trigger actions such as edit or delete upon tapping a list item--><!--
+                    <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <VerticalStackLayout Padding="5">
+                                        <Label Text="{Binding Job_Title}" FontSize="17" FontAttributes="Bold" />
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding U_ID}" />
+                                            <Label Grid.Column="1" Text="{Binding Job_Sched}" />
+                                            <Label Grid.Column="2" Text="{Binding Cat_ID}"/>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </FlexLayout>
+            </StackLayout>-->
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
