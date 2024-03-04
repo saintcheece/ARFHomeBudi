@@ -29,5 +29,15 @@ namespace ARFHomeBudi.Services
         {
             await _connection.InsertAsync(joboffer);
         }
+
+        public async Task Update(JobOffer joboffer)
+        {
+            await _connection.UpdateAsync(joboffer);
+        }
+
+        public async Task Delete(JobOffer joboffer)
+        {
+            await _connection.DeleteAsync(joboffer);
+        }
     }
 }

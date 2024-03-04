@@ -14,6 +14,7 @@ namespace ARFHomeBudi
             Routing.RegisterRoute(nameof(PostJob), typeof(PostJob));
             Routing.RegisterRoute(nameof(AdminPage), typeof(AdminPage));
             Routing.RegisterRoute(nameof(AdminProfilesPage), typeof(AdminProfilesPage));
+            Routing.RegisterRoute(nameof(AdminJobPage), typeof(AdminJobPage));
         }
     }
 }

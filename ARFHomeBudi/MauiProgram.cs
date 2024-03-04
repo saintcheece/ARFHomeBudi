@@ -25,6 +25,7 @@ namespace ARFHomeBudi
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<AdminPage>();
             builder.Services.AddTransient<AdminProfilesPage>();
+            builder.Services.AddTransient<AdminJobPage>();
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
