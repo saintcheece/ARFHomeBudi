@@ -27,7 +27,7 @@ public partial class LoginPage : ContentPage
 				authService.Login();
 				Email.Text = string.Empty;
 				Password.Text = string.Empty;
-				await Shell.Current.GoToAsync($"//{nameof(AdminProfilesPage)}");
+				await Shell.Current.GoToAsync($"//{nameof(AdminPage)}");
 			}else if(usr.U_Role == 3) {
                 Globals.USER_ID = usr.U_ID;
                 Globals.USER_ROLE = usr.U_Role;

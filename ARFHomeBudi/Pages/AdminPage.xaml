@@ -2,7 +2,26 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ARFHomeBudi.Pages.AdminPage"
-             Title="AdminPage">
+             Title="AdminPage"
+             Shell.FlyoutBehavior="Flyout">
+    <Shell.TitleView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Source="icon_name.png" HeightRequest="25" Grid.Column="0" />
+            <Button
+            Text="Log Out"
+            HorizontalOptions="EndAndExpand"  WidthRequest="100"
+            Margin="10"
+            BorderWidth="2"
+            BorderColor="White"
+            Grid.Column="1"
+            Clicked="Logout_Clicked"/>
+
+        </Grid>
+    </Shell.TitleView>
     <VerticalStackLayout>
         <StackLayout Margin="25" Spacing="10">
             <!--CATEGORY NAME-->
@@ -23,7 +42,7 @@
                     Clicked="AddCategory_Clicked"/>
             </VerticalStackLayout>
         </StackLayout>
-        <StackLayout Margin="10, 5">
+        <StackLayout Margin="10, 5" HeightRequest="500">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />

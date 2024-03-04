@@ -5,11 +5,15 @@ namespace ARFHomeBudi.Pages;
 public partial class AdminPage : ContentPage
 {
     private readonly CategoryDBService _categoryDB;
+    private readonly AuthService authService;
 
-	public AdminPage(CategoryDBService dbService)
+    public int _editCatID;
+
+    public AdminPage(CategoryDBService dbService)
 	{
 		InitializeComponent();
         _categoryDB = dbService;
+        this.authService = new AuthService();
         Task.Run(async () => listView.ItemsSource = await _categoryDB.GetCategories());
     }
 
@@ -17,22 +21,36 @@ public partial class AdminPage : ContentPage
     {
         try
         {
-            await _categoryDB.Create(new Category
+            if (_editCatID == 0)
             {
-                Cat_Name = CatName.Text,
-                Cat_Rate = float.Parse(CatPrice.Text)
-            });
-        }catch(Exception err)
+                await _categoryDB.Create(new Category
+                {
+                    Cat_Name = CatName.Text,
+                    Cat_Rate = float.Parse(CatPrice.Text)
+                });
+            }
+            else
+            {
+                await _categoryDB.Update(new Category
+                {
+                    Cat_ID = _editCatID,
+                    Cat_Name = CatName.Text,
+                    Cat_Rate = float.Parse(CatPrice.Text)
+                });
+                _editCatID = 0;
+            }
+
+            CatName.Text = string.Empty;
+            CatPrice.Text = string.Empty;
+        }
+        catch (Exception err)
         {
-            DisplayAlert("Error", err.ToString(), "OK");
+            DisplayAlert("There's something wrong with that response, please check and try again.", err.ToString(), "OK");
         }
 
-        CatName.Text = string.Empty;
-        CatPrice.Text = string.Empty;
+        listView.ItemsSource = await _categoryDB.GetCategories();
 
-        await Task.Run(async () => listView.ItemsSource = await _categoryDB.GetCategories());
     }
-
     private async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
     {
         var cat = (Category)e.Item;
@@ -42,6 +60,7 @@ public partial class AdminPage : ContentPage
         switch (action)
         {
             case "Edit":
+                _editCatID = cat.Cat_ID;
                 CatName.Text = cat.Cat_Name;
                 CatPrice.Text = cat.Cat_Rate.ToString();
                 break;
@@ -51,5 +70,11 @@ public partial class AdminPage : ContentPage
                 listView.ItemsSource = await _categoryDB.GetCategories();
                 break;
         }
+    }
+
+    private async void Logout_Clicked(object sender, EventArgs e)
+    {
+        authService.Logout();
+        await Shell.Current.GoToAsync($"//{nameof(LoadingPage)}");
     }
 }
